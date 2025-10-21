@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CurrencyFlow - Convertisseur de devises en temps réel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="12" cy="12" r="10" stroke="white"/>
+            <path d="M12 6v12M9 9h6M9 15h6" stroke="white" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">CurrencyFlow</span>
+          <span class="logo-subtitle">Taux en temps réel</span>
+        </div>
+      </a>
+      <div class="status-badge" id="status-badge">
+        <div class="status-dot"></div>
+        <span id="etat">Connexion...</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Convertisseur de devises</h1>
+      <p>Conversions instantanées avec les taux de change en temps réel</p>
+    </section>
+
+    <div class="card main-card">
+      <div class="input-group">
+        <label for="saisie-montant">Montant à convertir</label>
+        <div class="amount-input-wrapper">
+          <input 
+            id="saisie-montant" 
+            type="number" 
+            min="0" 
+            step="0.01" 
+            placeholder="1000.00"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <div class="conversion-row">
+        <div class="currency-select-wrapper">
+          <label for="devise-source">De</label>
+          <select id="devise-source" class="currency-select"></select>
+        </div>
+
+        <button id="inverser" class="swap-button" title="Échanger les devises" aria-label="Échanger les devises">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 16V4M7 4L3 8M7 4l4 4M17 8v12m0 0l4-4m-4 4l-4-4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="currency-select-wrapper">
+          <label for="devise-cible">À</label>
+          <select id="devise-cible" class="currency-select"></select>
+        </div>
+      </div>
+
+      <div class="result-section">
+        <div class="rate-info" id="ligne-taux">—</div>
+        <output id="affichage" class="result-display" aria-live="polite">
+          Saisissez un montant pour commencer
+        </output>
+      </div>
+
+      <div class="actions">
+        <button id="actualiser" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Actualiser les taux
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Historique des conversions
+        </h2>
+        <button id="vider-historique" class="btn-secondary">Effacer</button>
+      </div>
+      <ul id="liste-historique" class="history-list"></ul>
+      <div id="empty-history" class="empty-state">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p>Aucune conversion récente</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>© 2025 CurrencyFlow. Données fournies par ExchangeRate-API</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
